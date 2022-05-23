@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 const mysql = require("./db/mysql.js");
 
-mysql.connect();
+// mysql.connect();
 
 // route
 const user = require("./user/user.js");
@@ -13,7 +13,45 @@ const category = require("./category/category.js");
 app.use("/api/user", user);
 app.use("/api/category", category);
 
-app.get("/", (req, res) => res.send("Hello Express!"));
+
+app.get('/',(req, res) =>{
+  res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/list',(req, res) =>{
+  res.sendFile(__dirname + '/list.html')
+})
+
+app.get('/wirting_success',(req, res) =>{
+  res.sendFile(__dirname + '/list.html')
+})
+
+app.post('/wirting_success',(req, res) =>{
+  res.sendFile(__dirname + '/list.html')
+})
+
+app.get('/login',(req, res) =>{
+  res.sendFile(__dirname + '/login.html')
+})
+
+app.post('/login',(req, res) =>{
+  res.sendFile(__dirname + '/login.html')
+})
+
+app.get('/login_success',(req, res) =>{
+  res.sendFile(__dirname + '/list.html')
+})
+
+app.get('/register',(req, res) =>{
+  res.sendFile(__dirname + '/register.html')
+})
+
+app.get('/writing',(req, res) =>{
+  res.sendFile(__dirname + '/writing.html')
+})
+
+
+
 
 app.get("/user/:name/:age", function (req, res) {
   var params = req.params;
